@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Shop\Auth;
+
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class AdminLoginController extends Controller
+
+class LoginController extends Controller
 {
     Use AuthenticatesUsers;
 
@@ -16,7 +18,7 @@ class AdminLoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/panel';
+    protected $redirectTo = '/shop/panel';
 
     /**
      * Create a new controller instance.
@@ -29,14 +31,14 @@ class AdminLoginController extends Controller
     }
 
     /**
-     * Devuelve la vista de login.
-     *
-     * @return void
-     */
+    * Devuelve la vista de login.
+    *
+    * @return void
+    */
     public function showLoginForm()
     {
 
-        return view('auth.adminLogin');
+        return view('auth.shopLogin');
 
     }
 
@@ -47,7 +49,7 @@ class AdminLoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('shop');
     }
 
 

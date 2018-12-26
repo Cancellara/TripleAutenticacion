@@ -27,10 +27,10 @@ Route::get('/user/panel', function(){
 //Rutas para las tiendas.
 //Login
 Route::get('/shop/login', 'Auth\ShopLoginController@showLoginForm')->name('shop.loginForm');
-Route::post('/shop/login', 'Auth\ShopLoginController@login');
+Route::post('/shop/login', 'Auth\ShopLoginController@login')->name('shop.login');
 //Registro
 Route::get('/shop/register', 'Auth\ShopRegisterController@showRegistrationForm')->name('shop.registerForm');
-Route::post('/shop/register', 'Auth\ShopRegisterController@register');
+Route::post('/shop/register', 'Auth\ShopRegisterController@register')->name('shop.register');
 //Panel de control
 Route::get('/shop/panel', function(){
     return 'Control panel shop';
@@ -39,10 +39,12 @@ Route::get('/shop/panel', function(){
 //Rutas para el admin
 //Login
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.loginForm');
-Route::post('admin/login', 'Auth\AdminLoginController@login');
+Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
 //Panel de control
-Route::get('/shop/panel', function(){
-    return 'Control panel admin';
+Route::get('/admin/panel', function(){
+    dd(Auth::guard('admin'));
+    $text = 'User logued ' .  Auth::guard('admin')->user()->name;
+    return $text;
 });
 
 
